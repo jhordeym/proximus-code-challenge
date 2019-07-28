@@ -19,9 +19,12 @@ Back-end application developed with Angular 7
 
 Attention: You must have mongodb installed and running in your machine at port
 
-Run `mvn clean install`
+Run `mvn clean install` or `maven clean package` (might also want to add `-U` to update snapshots)
 
 Either run the app manually or using an IDE.
+
+Manually:
+`java -jar target/proximus-backend-0.0.1-SNAPSHOT.jar`
 
 The server should be available at `http://localhost:8090/`
 

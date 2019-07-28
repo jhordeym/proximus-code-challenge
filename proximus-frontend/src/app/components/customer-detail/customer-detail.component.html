@@ -1,0 +1,38 @@
+<div style="text-align:center" class="container">
+    <div id="customers" class="card-wrapper">
+        <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{ this.customer ? 'Customer Info' : 'Register New Customer' }}</mat-card-title>
+            </mat-card-header>
+            <!-- content -->
+            <mat-card-content>
+                <form [formGroup]="customerEditForm" (ngSubmit)="this.update()">
+                    <mat-form-field>
+                        <mat-label>Name:</mat-label>
+                        <input matInput formControlName="name">
+                      </mat-form-field>
+                      <br>
+                      <mat-form-field>
+                          <mat-label>Email:</mat-label>
+                          <input matInput formControlName="email">
+                      </mat-form-field>
+                      <br>
+                      <mat-form-field>
+                          <mat-label>Phone:</mat-label>
+                          <input matInput formControlName="phone">
+                      </mat-form-field>
+                      <br>
+                      <mat-form-field>
+                          <mat-label>Age:</mat-label>
+                          <input matInput formControlName="age">
+                      </mat-form-field>
+                      <br>
+                      <button mat-raised-button color="primary" type="submit">{{ this.customer ? 'Update' : 'Register' }}</button>
+                      <button *ngIf="this.customer" mat-raised-button color="primary" (click)="this.delete()">Delete</button>
+                </form>
+            </mat-card-content>
+          </mat-card>
+    </div>
+</div>
+
+<app-channels-list></app-channels-list>

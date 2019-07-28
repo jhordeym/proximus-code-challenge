@@ -1,0 +1,52 @@
+<div style="text-align:center" class="container">
+    <div id="customers" class="card-wrapper">
+        <mat-card>
+            <mat-card-header>
+              <mat-card-title>{{ this.channel ? 'Channel Info' : 'Register New Channel' }}</mat-card-title>
+            </mat-card-header>
+            <!-- content -->
+            <mat-card-content>
+                <form [formGroup]="channelEditForm" (ngSubmit)="this.update()">
+                    <mat-form-field>
+                        <mat-label>Name:</mat-label>
+                        <input matInput formControlName="name">
+                      </mat-form-field>
+                      <br>
+                      <mat-form-field>
+                          <mat-label>Number:</mat-label>
+                          <input matInput formControlName="number">
+                      </mat-form-field>
+                      <br>
+                      <mat-form-field>
+                          <mat-label>Resolution:</mat-label>
+                          <mat-select formControlName="resolution">
+                              <mat-option *ngFor="let res of resolutions" [value]="res">
+                                {{res}}
+                              </mat-option>
+                          </mat-select>
+                      </mat-form-field>
+                      <br>
+                      <mat-form-field>
+                          <mat-label>Enable:</mat-label>
+                          <mat-select formControlName="activeByDefault">
+                              <mat-option *ngFor="let choice of [true, false]" [value]="choice">
+                                {{choice}}
+                              </mat-option>
+                          </mat-select>
+                      </mat-form-field>
+                      <br>
+                      <div *ngIf="this.channel" class="badges">
+                          <h3 class=".mat-h4 title">Categories</h3>
+                          <mat-chip-list>
+                              <mat-chip *ngFor="let cat of this.channel.categories">{{ cat }}</mat-chip>
+                          </mat-chip-list>
+                          <p *ngIf="!this.channel.categories">Do not have a category assigned</p>
+                      </div>
+                      <br>
+                      <button mat-raised-button color="primary" type="submit">{{ this.channel ? 'Update' : 'Register' }}</button>
+                      <button *ngIf="this.channel" mat-raised-button color="primary" (click)="this.delete()">Delete</button>
+                </form>
+            </mat-card-content>
+          </mat-card>
+    </div>
+</div>

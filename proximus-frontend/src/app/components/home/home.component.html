@@ -1,0 +1,23 @@
+<div style="text-align:center" class="container">
+  <div id="customers" class="card-wrapper">
+      <mat-card>
+          <mat-card-header>
+            <mat-card-title>All Customers</mat-card-title>
+
+          </mat-card-header>
+          <mat-card-content>
+            <mat-list *ngIf="customers">
+              <mat-list-item *ngFor="let c of customers" (click)="clickCustomer(c)">
+                  {{ c.name }}
+              </mat-list-item>
+            </mat-list>
+            <div *ngIf="!customers || !customers.length">
+              <p>No customers found!</p>
+            </div>
+          </mat-card-content>
+        </mat-card>
+  </div>
+
+</div>
+
+<app-channels-list></app-channels-list>
